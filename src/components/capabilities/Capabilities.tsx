@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { FaCode, FaServer, FaBrain, FaTools, FaCheckCircle } from 'react-icons/fa'
@@ -18,7 +18,7 @@ const capabilityPillars = [
     badge: 'Production Systems',
     desc: 'Architecting end-to-end web applications with modern frontend frameworks, scalable API servers, relational databases, and WebSocket state synchronization.',
     gradient: 'from-blue-500/20 via-cyan-500/10 to-transparent',
-    borderGlow: 'hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(56,189,248,0.15)]',
+    borderGlow: 'hover:border-cyan-400/50 hover:shadow-[0_0_40px_rgba(56,189,248,0.2)]',
     accentColor: '#38bdf8',
     skills: [
       { name: 'React.js & Next.js', level: 'Advanced' },
@@ -36,7 +36,7 @@ const capabilityPillars = [
     badge: 'Low-Level Engine',
     desc: 'Designing custom programming language pipelines (lexers, parsers, semantic analyzers, bytecode VMs) in C++ and compiling to WebAssembly for native-speed in-browser execution.',
     gradient: 'from-purple-500/20 via-indigo-500/10 to-transparent',
-    borderGlow: 'hover:border-purple-400/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)]',
+    borderGlow: 'hover:border-purple-400/50 hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]',
     accentColor: '#c084fc',
     skills: [
       { name: 'C++ & C Memory Mgmt', level: 'Advanced' },
@@ -54,7 +54,7 @@ const capabilityPillars = [
     badge: 'Intelligence & Research',
     desc: 'Extracting PPG physiological signals from optical video data and training ML regression models validated against clinical reference measurements for embedded real-time deployment.',
     gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
-    borderGlow: 'hover:border-emerald-400/50 hover:shadow-[0_0_40px_rgba(52,211,153,0.15)]',
+    borderGlow: 'hover:border-emerald-400/50 hover:shadow-[0_0_40px_rgba(52,211,153,0.2)]',
     accentColor: '#34d399',
     skills: [
       { name: 'Python & Scikit-learn', level: 'Advanced' },
@@ -72,7 +72,7 @@ const capabilityPillars = [
     badge: 'Infrastructure & CP',
     desc: 'Solving 500+ competitive programming challenges with high algorithmic efficiency while maintaining clean CI/CD deployment pipelines on cloud platforms.',
     gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
-    borderGlow: 'hover:border-amber-400/50 hover:shadow-[0_0_40px_rgba(251,191,36,0.15)]',
+    borderGlow: 'hover:border-amber-400/50 hover:shadow-[0_0_40px_rgba(251,191,36,0.2)]',
     accentColor: '#fbbf24',
     skills: [
       { name: 'Git & GitHub Workflows', level: 'Advanced' },
@@ -87,27 +87,29 @@ const capabilityPillars = [
 
 export default function Capabilities() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [activePillar, setActivePillar] = useState('fullstack')
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.cap-card', {
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 75%',
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: 'power3.out'
-      })
+      gsap.fromTo('.cap-card', 
+        { y: 30, opacity: 0 },
+        {
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 90%',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out'
+        }
+      )
     }, containerRef)
     return () => ctx.revert()
   }, [])
 
   return (
-    <SectionWrapper id="capabilities" className="py-28 relative">
+    <SectionWrapper id="capabilities" className="py-24 relative">
       {/* Background Subtle Gradient Highlights */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -115,7 +117,7 @@ export default function Capabilities() {
       <div ref={containerRef} className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 font-mono text-xs uppercase tracking-widest mb-4">
               <span>Technical Domain Matrix</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-extrabold tracking-tighter text-white">
@@ -123,7 +125,7 @@ export default function Capabilities() {
             </h2>
           </div>
 
-          <p className="text-slate-400 text-base md:text-lg max-w-md leading-relaxed">
+          <p className="text-slate-300 text-base md:text-lg max-w-md leading-relaxed">
             Bridging core computer science fundamentals with high-performance web systems and machine learning analytics.
           </p>
         </div>
@@ -135,8 +137,7 @@ export default function Capabilities() {
             return (
               <div 
                 key={pillar.id}
-                onMouseEnter={() => setActivePillar(pillar.id)}
-                className={`cap-card relative p-8 md:p-10 rounded-3xl bg-[#0f172a]/60 backdrop-blur-xl border border-slate-800 transition-all duration-500 flex flex-col justify-between group overflow-hidden ${pillar.borderGlow}`}
+                className={`cap-card relative p-8 md:p-10 rounded-3xl bg-[#090d16] border border-slate-800 transition-all duration-500 flex flex-col justify-between group overflow-hidden ${pillar.borderGlow}`}
               >
                 {/* Background Gradient Mesh */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${pillar.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}></div>
@@ -147,7 +148,7 @@ export default function Capabilities() {
                       <IconComp className="text-2xl" />
                     </div>
 
-                    <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300 font-medium">
+                    <span className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-200 font-semibold">
                       {pillar.badge}
                     </span>
                   </div>
@@ -164,18 +165,18 @@ export default function Capabilities() {
                 {/* Skills Chips */}
                 <div>
                   <div className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-4 font-semibold flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: pillar.accentColor }}></span>
+                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: pillar.accentColor }}></span>
                     <span>Core Technologies</span>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-2.5">
                     {pillar.skills.map((s, j) => (
-                      <div key={j} className="flex items-center justify-between p-2.5 rounded-xl bg-white/[0.03] border border-white/5 group-hover:border-white/10 transition-colors">
+                      <div key={j} className="flex items-center justify-between p-3 rounded-xl bg-white/[0.04] border border-white/10 group-hover:border-white/20 transition-colors">
                         <div className="flex items-center gap-2">
                           <FaCheckCircle className="text-xs" style={{ color: pillar.accentColor }} />
-                          <span className="text-xs font-mono text-slate-200">{s.name}</span>
+                          <span className="text-xs font-mono text-slate-100 font-medium">{s.name}</span>
                         </div>
-                        <span className="text-[10px] font-mono text-slate-400 px-2 py-0.5 rounded bg-white/5">{s.level}</span>
+                        <span className="text-[10px] font-mono text-slate-300 font-semibold px-2 py-0.5 rounded bg-white/10">{s.level}</span>
                       </div>
                     ))}
                   </div>
