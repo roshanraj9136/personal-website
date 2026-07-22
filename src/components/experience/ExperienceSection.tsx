@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { FaTerminal, FaBriefcase, FaCalendarAlt, FaBuilding } from 'react-icons/fa'
 import SectionWrapper from '../shared/SectionWrapper'
 
 if (typeof window !== 'undefined') {
@@ -14,6 +15,7 @@ const experiences = [
     role: "Summer Research Intern",
     company: "S3 Summer Labs, IIT Bhilai",
     date: "Jun 2025 – Aug 2025",
+    tag: "RESEARCH & EMBEDDED ML",
     accent: "#a855f7",
     points: [
       "Developed a non-invasive hemoglobin estimation system using fingertip videos captured under controlled multi-wavelength LED illumination.",
@@ -26,7 +28,8 @@ const experiences = [
     role: "Web Developer",
     company: "Meru Conference, IIT Bhilai",
     date: "May 2024 – Jul 2024",
-    accent: "#3b82f6",
+    tag: "FULL-STACK WEB",
+    accent: "#38bdf8",
     points: [
       "Led end-to-end web development of the Meru Conference 2026 platform, serving as the central hub for attendee registrations, schedules, and speaker profiles.",
       "Collaborated cross-functionally with design and organizing teams to deliver features on tight deadlines."
@@ -37,7 +40,8 @@ const experiences = [
     role: "Polestar Mentor",
     company: "Openlink Foundation",
     date: "2023 – 2024",
-    accent: "#10b981",
+    tag: "MENTORSHIP & LEADERSHIP",
+    accent: "#34d399",
     points: [
       "Mentored 15+ students in academic planning, competitive exam strategy, and structured goal-setting.",
       "Designed personalized learning roadmaps and conducted regular feedback sessions to monitor student progress."
@@ -51,7 +55,7 @@ export default function ExperienceSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".exp-item", {
+      gsap.from(".exp-log-item", {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top 80%",
@@ -69,39 +73,55 @@ export default function ExperienceSection() {
   return (
     <SectionWrapper id="experience" className="py-24">
       <div ref={containerRef} className="max-w-5xl mx-auto">
-        <div className="text-indigo-400 font-mono text-sm uppercase tracking-widest mb-3">Work & Research</div>
-        <h2 className="text-4xl md:text-6xl font-extrabold mb-16 tracking-tighter text-slate-100">
-          Experience.
-        </h2>
         
-        <div className="relative border-l border-white/10 ml-4 md:ml-6 pl-8 space-y-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 font-mono text-xs uppercase tracking-widest mb-4">
+              <FaTerminal className="text-xs" /> <span>experience.log</span>
+            </div>
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tighter text-white">
+              Work Experience.
+            </h2>
+          </div>
+          <p className="text-slate-400 text-sm md:text-base max-w-md font-mono">
+            Research internships, full-stack web engineering, and student mentorship track records.
+          </p>
+        </div>
+
+        {/* Timeline Console Log Cards */}
+        <div className="relative border-l-2 border-slate-800 ml-4 md:ml-6 pl-8 space-y-12">
           {experiences.map((exp, i) => (
-            <div key={i} className="exp-item relative group">
-              {/* Timeline Dot */}
+            <div key={i} className="exp-log-item relative group">
+              {/* Terminal Glow Node */}
               <div 
-                className="absolute -left-[41px] top-1.5 w-4 h-4 rounded-full border-2 border-[#0a0a0f] transition-all duration-300 group-hover:scale-125"
+                className="absolute -left-[42px] top-1.5 w-5 h-5 rounded-full border-4 border-[#040407] transition-all duration-300 group-hover:scale-125 shadow-lg"
                 style={{ backgroundColor: exp.accent }}
               ></div>
 
-              <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-white/15 transition-all duration-300 group-hover:bg-white/[0.03]">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+              <div className="p-8 rounded-3xl bg-[#090d16]/80 backdrop-blur-xl border border-slate-800 hover:border-slate-700 transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-100 group-hover:text-indigo-400 transition-colors">
+                    <div className="flex items-center gap-2 text-xs font-mono mb-2" style={{ color: exp.accent }}>
+                      <span>[{exp.tag}]</span>
+                    </div>
+                    <h3 className="text-2xl font-extrabold text-white group-hover:text-cyan-300 transition-colors flex items-center gap-2">
                       {exp.role}
                     </h3>
-                    <div className="text-lg font-medium text-slate-300">
-                      {exp.company}
+                    <div className="text-base font-medium text-slate-300 flex items-center gap-2 mt-1">
+                      <FaBuilding className="text-slate-500 text-xs" /> {exp.company}
                     </div>
                   </div>
-                  <div className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-400 self-start md:self-auto">
-                    {exp.date}
+
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300 self-start md:self-auto">
+                    <FaCalendarAlt className="text-xs text-slate-400" />
+                    <span>{exp.date}</span>
                   </div>
                 </div>
 
-                <ul className="space-y-3 text-slate-300 mb-6">
+                <ul className="space-y-3 text-slate-300 mb-6 font-sans">
                   {exp.points.map((point, j) => (
                     <li key={j} className="flex items-start text-base leading-relaxed">
-                      <span className="text-indigo-400 mr-3 mt-1.5 text-xs">◆</span>
+                      <span className="text-cyan-400 mr-3 mt-1.5 text-xs font-mono">➜</span>
                       <span>{point}</span>
                     </li>
                   ))}
@@ -118,6 +138,7 @@ export default function ExperienceSection() {
             </div>
           ))}
         </div>
+
       </div>
     </SectionWrapper>
   )
