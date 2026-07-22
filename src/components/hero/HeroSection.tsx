@@ -72,7 +72,7 @@ export default function HeroSection() {
         <div className="lg:col-span-6 flex flex-col items-start text-left">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-xs font-mono text-cyan-300 mb-6 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            <span>IIT Bhilai CSE 2027 • Placement Ready</span>
+            <span>Undergraduate @ IIT Bhilai | CSE 2027</span>
           </div>
 
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tighter text-white mb-6 leading-tight">
