@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { FaFileCode, FaTerminal, FaBriefcase, FaGraduationCap, FaDownload, FaEnvelope } from 'react-icons/fa'
+import { FaFileCode, FaTerminal, FaBriefcase, FaGraduationCap, FaDownload, FaEnvelope, FaCode } from 'react-icons/fa'
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState('hero')
