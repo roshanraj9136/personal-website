@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { FaGithub, FaInstagram, FaEnvelope } from 'react-icons/fa'
+import { FaGithub, FaEnvelope, FaFileDownload, FaCode } from 'react-icons/fa'
 import SectionWrapper from '../shared/SectionWrapper'
 
 if (typeof window !== 'undefined') {
@@ -31,40 +31,53 @@ export default function ContactSection() {
   }, [])
 
   return (
-    <SectionWrapper id="contact" className="py-32">
+    <SectionWrapper id="contact" className="py-24">
       <div ref={containerRef} className="flex flex-col items-center text-center max-w-4xl mx-auto">
-        <h2 className="contact-item text-[12vw] md:text-[8rem] leading-none font-extrabold mb-8 tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">
-          Let's Talk.
+        <div className="contact-item text-indigo-400 font-mono text-sm uppercase tracking-widest mb-3">Get In Touch</div>
+        <h2 className="contact-item text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter text-slate-100">
+          Let's Connect.
         </h2>
-        <p className="contact-item text-slate-400 mb-16 text-xl md:text-2xl leading-relaxed max-w-2xl">
-          Currently exploring new opportunities. Whether you have a question or just want to say hi, my inbox is always open.
+        <p className="contact-item text-slate-300 mb-12 text-lg md:text-xl leading-relaxed max-w-xl">
+          Interested in full-stack development, compilers, or ML research? Reach out for placement opportunities, project collaborations, or tech discussions.
         </p>
 
-        <div className="contact-item flex flex-wrap justify-center gap-6">
-          <a 
-            href="https://instagram.com/roshan_9136_" 
-            target="_blank" 
-            rel="noreferrer"
-            className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/30 transition-all text-slate-200 text-lg group"
-          >
-            <FaInstagram className="text-[#E1306C] group-hover:scale-110 transition-transform" /> Instagram
-          </a>
-
-          <a 
-            href="https://github.com/roshanraj9136" 
-            target="_blank" 
-            rel="noreferrer"
-            className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/30 transition-all text-slate-200 text-lg group"
-          >
-            <FaGithub className="text-white group-hover:scale-110 transition-transform" /> GitHub
-          </a>
-
+        <div className="contact-item flex flex-wrap justify-center gap-4 mb-12 w-full max-w-2xl">
           <a 
             href="mailto:roshanr@iitbhilai.ac.in" 
-            className="flex items-center gap-3 px-8 py-4 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/30 transition-all text-slate-200 text-lg group"
+            className="flex-1 min-w-[200px] flex items-center justify-center gap-3 px-6 py-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-2xl transition-all font-medium text-base shadow-lg shadow-indigo-600/20"
           >
-            <FaEnvelope className="text-[#EA4335] group-hover:scale-110 transition-transform" /> Email
+            <FaEnvelope className="text-xl" />
+            <span>Email Me</span>
           </a>
+
+          <a 
+            href="/roshan-resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="flex-1 min-w-[200px] flex items-center justify-center gap-3 px-6 py-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-slate-200 rounded-2xl transition-all font-medium text-base"
+          >
+            <FaFileDownload className="text-lg text-indigo-400" />
+            <span>Download Resume PDF</span>
+          </a>
+        </div>
+
+        {/* Social / Profiles bar */}
+        <div className="contact-item flex flex-wrap justify-center gap-6 pt-8 border-t border-white/5 text-sm font-mono text-slate-400">
+          <a href="https://github.com/roshanraj9136" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
+            <FaGithub className="text-base" /> GitHub
+          </a>
+          <span className="text-slate-700">•</span>
+          <a href="https://leetcode.com/u/leave_the_past/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
+            <FaCode className="text-base" /> LeetCode
+          </a>
+          <span className="text-slate-700">•</span>
+          <a href="https://codeforces.com/profile/Dr.doom18967" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
+            <FaCode className="text-base" /> Codeforces
+          </a>
+        </div>
+
+        <div className="mt-16 text-xs text-slate-600 font-mono">
+          Designed & Engineered by Roshan Raj © 2026. IIT Bhilai.
         </div>
       </div>
     </SectionWrapper>
