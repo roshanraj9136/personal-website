@@ -66,15 +66,6 @@ export default function Navbar() {
             </a>
 
             <a 
-              href="#methodology" 
-              onClick={(e) => handleNavClick(e, '#methodology', 'methodology')}
-              className={`px-3 py-1.5 rounded-lg flex items-center gap-2 transition-all ${activeTab === 'methodology' ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}
-            >
-              <FaTerminal className="text-xs text-purple-400" />
-              <span>pipeline.sh</span>
-            </a>
-
-            <a 
               href="#experience" 
               onClick={(e) => handleNavClick(e, '#experience', 'experience')}
               className={`px-3 py-1.5 rounded-lg flex items-center gap-2 transition-all ${activeTab === 'experience' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'}`}

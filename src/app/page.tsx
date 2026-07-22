@@ -5,7 +5,6 @@ import Capabilities from '@/components/capabilities/Capabilities'
 import ExperienceSection from '@/components/experience/ExperienceSection'
 import EducationSection from '@/components/experience/EducationSection'
 import ProjectsStack from '@/components/projects/ProjectsStack'
-import Methodology from '@/components/methodology/Methodology'
 import ContactSection from '@/components/contact/ContactSection'
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <Capabilities />
-      <Methodology />
       <ExperienceSection />
       <ProjectsStack />
       <EducationSection />
