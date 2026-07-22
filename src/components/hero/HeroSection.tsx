@@ -43,7 +43,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section ref={containerRef} className="relative flex flex-col justify-center min-h-screen px-6 overflow-hidden sm:px-12 lg:px-24 bg-[#0a0a0f] pt-24">
+    <section ref={containerRef} className="relative flex flex-col justify-center min-h-screen px-6 overflow-hidden sm:px-12 lg:px-24 bg-[#040407] pt-24">
       <Canvas3D />
       
       <div className="relative z-10 max-w-5xl mx-auto w-full flex flex-col items-center text-center">

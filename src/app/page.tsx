@@ -10,7 +10,7 @@ import ContactSection from '@/components/contact/ContactSection'
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#080c14] text-slate-100 overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+    <main className="relative min-h-screen bg-[#040407] text-white overflow-x-hidden selection:bg-cyan-400 selection:text-black">
       <CustomCursor />
       <Navbar />
       <HeroSection />
