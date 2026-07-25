@@ -14,7 +14,7 @@ const experiences = [
   {
     role: "Summer Research Intern",
     company: "S3 Summer Labs, IIT Bhilai",
-    date: "Jun 2025 – Aug 2025",
+    date: "Jun 2026 – Aug 2026",
     tag: "RESEARCH & EMBEDDED ML",
     accent: "#a855f7",
     points: [
@@ -27,7 +27,7 @@ const experiences = [
   {
     role: "Web Developer",
     company: "Meru Conference, IIT Bhilai",
-    date: "May 2024 – Jul 2024",
+    date: "May 2025 – Jul 2025",
     tag: "FULL-STACK WEB",
     accent: "#38bdf8",
     points: [
@@ -39,7 +39,7 @@ const experiences = [
   {
     role: "Polestar Mentor",
     company: "Openlink Foundation",
-    date: "2023 – 2024",
+    date: "2024 – 2026",
     tag: "MENTORSHIP & LEADERSHIP",
     accent: "#34d399",
     points: [
