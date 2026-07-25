@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { FaTerminal, FaPlay, FaFileDownload, FaGithub, FaCode, FaCheckCircle } from 'react-icons/fa'
+import { FaTerminal, FaPlay, FaFileDownload, FaGithub, FaLinkedin, FaCode, FaCheckCircle } from 'react-icons/fa'
 import Canvas3D from './Canvas3D'
 
 export default function HeroSection() {
@@ -117,6 +117,15 @@ export default function HeroSection() {
               className="flex items-center justify-center gap-2 px-5 py-3.5 bg-white/5 hover:bg-white/10 text-slate-200 font-mono text-sm font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all"
             >
               <FaGithub className="text-lg" /> <span>GitHub</span>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/roshan-raj-36a449374"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-2 px-5 py-3.5 bg-white/5 hover:bg-white/10 text-slate-200 font-mono text-sm font-semibold rounded-xl border border-white/10 hover:border-white/20 transition-all"
+            >
+              <FaLinkedin className="text-lg" /> <span>LinkedIn</span>
             </a>
           </div>
         </div>

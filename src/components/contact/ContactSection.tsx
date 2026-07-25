@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { FaGithub, FaEnvelope, FaFileDownload, FaCode } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaFileDownload, FaCode } from 'react-icons/fa'
 import SectionWrapper from '../shared/SectionWrapper'
 
 if (typeof window !== 'undefined') {
@@ -65,6 +65,10 @@ export default function ContactSection() {
         <div className="contact-item flex flex-wrap justify-center gap-6 pt-8 border-t border-white/5 text-sm font-mono text-slate-400">
           <a href="https://github.com/roshanraj9136" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
             <FaGithub className="text-base" /> GitHub
+          </a>
+          <span className="text-slate-700">•</span>
+          <a href="https://www.linkedin.com/in/roshan-raj-36a449374" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
+            <FaLinkedin className="text-base" /> LinkedIn
           </a>
           <span className="text-slate-700">•</span>
           <a href="https://leetcode.com/u/leave_the_past/" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-indigo-400 transition-colors">
