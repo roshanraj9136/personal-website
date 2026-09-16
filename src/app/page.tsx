@@ -1,23 +1,46 @@
-import HeroSection from '@/components/hero/HeroSection'
-import Navbar from '@/components/shared/Navbar'
-import CustomCursor from '@/components/shared/CustomCursor'
-import Capabilities from '@/components/capabilities/Capabilities'
-import ExperienceSection from '@/components/experience/ExperienceSection'
-import EducationSection from '@/components/experience/EducationSection'
-import ProjectsStack from '@/components/projects/ProjectsStack'
-import ContactSection from '@/components/contact/ContactSection'
+import SceneMount from '@/components/three/SceneMount'
+import About from '@/components/sections/About'
+import Contact from '@/components/sections/Contact'
+import Hero from '@/components/sections/Hero'
+import Skills from '@/components/sections/Skills'
+import WorkSection from '@/components/sections/WorkSection'
+import CompilerDemo from '@/components/sections/demos/CompilerDemo'
+import IncidentReport from '@/components/sections/demos/IncidentReport'
+import PullRequests from '@/components/sections/demos/PullRequests'
+import RaceHud from '@/components/sections/demos/RaceHud'
+import SignalPipeline from '@/components/sections/demos/SignalPipeline'
+import Nav from '@/components/ui/Nav'
+import SmoothScroll from '@/components/ui/SmoothScroll'
+import StageRail from '@/components/ui/StageRail'
+import StageTracker from '@/components/ui/StageTracker'
+import { work } from '@/content/site'
+
+const demos: Record<string, React.ReactNode> = {
+  nishad: <SignalPipeline />,
+  minilang: <CompilerDemo />,
+  'load-balancer': <IncidentReport />,
+  algorace: <RaceHud />,
+  'open-source': <PullRequests />,
+}
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#040407] text-white overflow-x-hidden selection:bg-cyan-400 selection:text-black">
-      <CustomCursor />
-      <Navbar />
-      <HeroSection />
-      <Capabilities />
-      <ExperienceSection />
-      <ProjectsStack />
-      <EducationSection />
-      <ContactSection />
-    </main>
+    <>
+      <SceneMount />
+      <div className="vignette" aria-hidden="true" />
+      <SmoothScroll />
+      <StageTracker />
+      <Nav />
+      <StageRail />
+      <main className="relative z-10">
+        <Hero />
+        {work.map((item) => (
+          <WorkSection key={item.id} item={item} demo={demos[item.id]} />
+        ))}
+        <Skills />
+        <About />
+        <Contact />
+      </main>
+    </>
   )
 }
