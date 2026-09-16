@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useMemo, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, type CSSProperties } from 'react'
+import { ledStore, useStore } from '@/lib/store'
 
 const LEDS = [
   { nm: 590, color: '#ffc53d' },
@@ -25,12 +26,12 @@ const DEVICE = ['GPIO/PWM LED sequencing', '30 fps capture', 'PyTorch 3-branch R
 const RESEARCH = ['820 histogram + 240 PPG features', 'RF + LightGBM + XGBoost', '91.4% anemia sensitivity']
 
 export default function SignalPipeline() {
-  const [active, setActive] = useState(0)
-  const [auto, setAuto] = useState(true)
+  const active = useStore(ledStore, (s) => s.active)
+  const auto = useStore(ledStore, (s) => s.auto)
 
   useEffect(() => {
     if (!auto || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-    const id = window.setInterval(() => setActive((i) => (i + 1) % LEDS.length), 1800)
+    const id = window.setInterval(() => ledStore.set((s) => ({ ...s, active: (s.active + 1) % LEDS.length })), 1800)
     return () => window.clearInterval(id)
   }, [auto])
 
@@ -49,10 +50,7 @@ export default function SignalPipeline() {
           <button
             key={item.nm}
             type="button"
-            onClick={() => {
-              setAuto(false)
-              setActive(i)
-            }}
+            onClick={() => ledStore.set({ active: i, auto: false })}
             aria-pressed={i === active}
             className="led-chip"
             style={{ '--chip': item.color } as CSSProperties}

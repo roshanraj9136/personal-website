@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useReducer, useRef } from 'react'
+import { raceStore } from '@/lib/store'
 
 // Same formula as AlgoRace's elo.ts (K-factor 32).
 function computeElo(winner: number, loser: number) {
@@ -58,6 +59,11 @@ export default function RaceHud() {
       observer.disconnect()
     }
   }, [])
+
+  // Mirror the race into the 3D track on the AlgoRace floor.
+  useEffect(() => {
+    raceStore.set({ passed: race.passed, winner: race.winner })
+  }, [race])
 
   const { passed, winner } = race
   const result =

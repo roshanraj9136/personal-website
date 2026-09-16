@@ -6,6 +6,7 @@ import Skills from '@/components/sections/Skills'
 import WorkSection from '@/components/sections/WorkSection'
 import CompilerDemo from '@/components/sections/demos/CompilerDemo'
 import IncidentReport from '@/components/sections/demos/IncidentReport'
+import LiveSimulation from '@/components/sections/demos/LiveSimulation'
 import PullRequests from '@/components/sections/demos/PullRequests'
 import RaceHud from '@/components/sections/demos/RaceHud'
 import SignalPipeline from '@/components/sections/demos/SignalPipeline'
@@ -18,7 +19,12 @@ import { work } from '@/content/site'
 const demos: Record<string, React.ReactNode> = {
   nishad: <SignalPipeline />,
   minilang: <CompilerDemo />,
-  'load-balancer': <IncidentReport />,
+  'load-balancer': (
+    <div className="grid gap-4">
+      <LiveSimulation />
+      <IncidentReport />
+    </div>
+  ),
   algorace: <RaceHud />,
   'open-source': <PullRequests />,
 }

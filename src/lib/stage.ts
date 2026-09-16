@@ -3,7 +3,7 @@
 // inside the middle part of a section the stage holds steady; in the gaps
 // between sections it blends smoothly to the next one.
 
-export const stageState = { target: 0, current: 0 }
+export const stageState = { target: 0, current: 0, snap: false }
 
 type Anchor = { start: number; end: number; stage: number }
 

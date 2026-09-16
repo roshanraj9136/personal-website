@@ -13,10 +13,10 @@ const channels = [
 export default function Contact() {
   return (
     <section id="contact" data-stage={7} aria-labelledby="contact-title" className="relative flex min-h-[100svh] items-center py-28">
-      <div className="container-x w-full text-center">
+      <div className="container-x contact-backdrop w-full text-center">
         <Reveal>
           <p className="eyebrow justify-center">
-            <span className="text-cyan-300">07</span>
+            <span className="text-cyan-300">Summit</span>
             <span className="eyebrow-rule" aria-hidden="true" />
             Contact
           </p>

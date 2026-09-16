@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { foldStore, useStore } from '@/lib/store'
 
 // Real output from MiniLang's WebAssembly build for this program.
 const SOURCE = `#include <iostream>
@@ -59,7 +60,7 @@ type Tab = (typeof TABS)[number]
 
 export default function CompilerDemo() {
   const [tab, setTab] = useState<Tab>('AST')
-  const [optimized, setOptimized] = useState(true)
+  const optimized = useStore(foldStore, (s) => s.on)
 
   return (
     <div className="demo">
@@ -78,7 +79,7 @@ export default function CompilerDemo() {
 
       {(tab === 'AST' || tab === 'Bytecode') && (
         <label className="toggle">
-          <input type="checkbox" checked={optimized} onChange={(e) => setOptimized(e.target.checked)} />
+          <input type="checkbox" checked={optimized} onChange={(e) => foldStore.set({ on: e.target.checked })} />
           <span className="toggle-track" aria-hidden="true" />
           Constant folding {optimized ? 'on' : 'off'}
         </label>

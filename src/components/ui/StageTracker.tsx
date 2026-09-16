@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect } from 'react'
-import { measureStages, updateStage } from '@/lib/stage'
+import { lbSim } from '@/lib/lbSim'
+import { measureStages, stageState, updateStage } from '@/lib/stage'
 
 export default function StageTracker() {
   useEffect(() => {
@@ -19,6 +20,19 @@ export default function StageTracker() {
     }
 
     remeasure()
+    if (new URLSearchParams(window.location.search).has('debug')) {
+      // Test hook: jump the 3D camera straight to a stage.
+      Object.assign(window, {
+        __stack: {
+          lbSim,
+          jump: (stage: number) => {
+            stageState.target = stage
+            stageState.current = stage
+            stageState.snap = true
+          },
+        },
+      })
+    }
     const observer = new ResizeObserver(remeasure)
     observer.observe(document.body)
     window.addEventListener('scroll', onScroll, { passive: true })

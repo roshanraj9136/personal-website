@@ -6,12 +6,12 @@ import { heroStats, profile } from '@/content/site'
 
 export default function Hero() {
   return (
-    <section id="top" data-stage={0} className="relative flex min-h-[100svh] items-end pb-20 pt-32 lg:items-center lg:pb-0">
+    <section id="top" data-stage={0} className="pass-through relative flex min-h-[100svh] items-end pb-20 pt-32 lg:items-center lg:pb-0">
       <div className="container-x grid w-full lg:grid-cols-2">
-        <div>
+        <div className="hero-copy">
           <Reveal>
             <p className="eyebrow">
-              <span className="live-dot" aria-hidden="true" /> B.Tech CSE · IIT Bhilai · Class of 2027
+              <span className="live-dot" aria-hidden="true" /> IIT Bhilai · B.Tech CSE 2027 · Scroll to climb
             </p>
           </Reveal>
 

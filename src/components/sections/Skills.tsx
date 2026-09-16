@@ -4,11 +4,12 @@ import { skills } from '@/content/site'
 
 export default function Skills() {
   return (
-    <section id="skills" data-stage={6} aria-labelledby="skills-title" className="relative py-28 lg:py-36">
+    <section id="skills" data-stage={6} aria-labelledby="skills-title" className="pass-through relative py-28 lg:py-36">
       <div className="container-x">
-        <Reveal>
+        <div className="lg:w-1/2 lg:pr-4">
+        <Reveal className="hero-copy">
           <p className="eyebrow">
-            <span className="text-violet-300">06</span>
+            <span className="text-cyan-300">L6 · Skills</span>
             <span className="eyebrow-rule" aria-hidden="true" />
             Toolbox
           </p>
@@ -18,7 +19,7 @@ export default function Skills() {
           <p className="body mt-4 max-w-2xl">Grouped by area, with the projects where I used them most.</p>
         </Reveal>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {skills.map((group, i) => (
             <Reveal key={group.group} delay={0.05 * i}>
               <TiltCard className="skill-card h-full" max={6}>
@@ -34,6 +35,7 @@ export default function Skills() {
               </TiltCard>
             </Reveal>
           ))}
+        </div>
         </div>
       </div>
     </section>

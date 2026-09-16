@@ -5,16 +5,17 @@ import { achievements, education } from '@/content/site'
 
 export default function About() {
   return (
-    <section id="about" data-stage={6} aria-labelledby="about-title" className="relative py-24 lg:py-32">
+    <section id="about" data-stage={6} aria-labelledby="about-title" className="pass-through relative py-24 lg:py-32">
       <div className="container-x">
-        <Reveal>
+        <div className="lg:w-1/2 lg:pr-4">
+        <Reveal className="hero-copy">
           <h2 id="about-title" className="section-title">
             Education & achievements
           </h2>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 lg:grid-cols-5">
-          <Reveal className="lg:col-span-3">
+        <div className="mt-10 grid gap-4">
+          <Reveal>
             <TiltCard className="skill-card h-full" max={5}>
               <p className="flex items-center gap-2 text-sm text-[var(--muted)]">
                 <FaGraduationCap aria-hidden="true" /> {education.period}
@@ -32,7 +33,7 @@ export default function About() {
             </TiltCard>
           </Reveal>
 
-          <div className="grid gap-4 lg:col-span-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             {achievements.map((item, i) => (
               <Reveal key={item.title} delay={0.08 * (i + 1)}>
                 <TiltCard className="skill-card h-full" max={7}>
@@ -50,6 +51,7 @@ export default function About() {
               </Reveal>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </section>

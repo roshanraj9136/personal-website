@@ -19,6 +19,7 @@ export type Work = {
   stage: number
   index: string
   navLabel: string
+  layer: string
   kicker: string
   title: string
   tagline: string
@@ -45,6 +46,7 @@ export const work: Work[] = [
     stage: 1,
     index: '01',
     navLabel: 'NISHAD',
+    layer: 'L1 · Hardware',
     kicker: 'Summer Research Intern · Jun – Aug 2026',
     title: 'NISHAD',
     tagline: 'Screening for anemia from a fingertip video',
@@ -73,6 +75,7 @@ export const work: Work[] = [
     stage: 2,
     index: '02',
     navLabel: 'MiniLang',
+    layer: 'L2 · Compiler',
     kicker: 'Compilers · Virtual machines · WebAssembly',
     title: 'MiniLang',
     tagline: 'A compiler, bytecode VM, and browser IDE, built from scratch',
@@ -103,6 +106,7 @@ export const work: Work[] = [
     stage: 3,
     index: '03',
     navLabel: 'Load Balancer',
+    layer: 'L3 · Network',
     kicker: 'Distributed Systems Lab · IIT Bhilai',
     title: 'Fault-Tolerant Load Balancer',
     tagline: 'Zero errors at 2,500 concurrent users on 1 CPU and 512 MiB',
@@ -130,6 +134,7 @@ export const work: Work[] = [
     stage: 4,
     index: '04',
     navLabel: 'AlgoRace',
+    layer: 'L4 · Application',
     kicker: 'Full-stack · Real-time',
     title: 'AlgoRace',
     tagline: 'Live 1v1 coding races',
@@ -160,6 +165,7 @@ export const work: Work[] = [
     stage: 5,
     index: '05',
     navLabel: 'Open Source',
+    layer: 'L5 · Open source',
     kicker: 'Open Source Contributor · Jun 2026',
     title: 'RateMyCourse',
     tagline: '5 merged security and privacy fixes',
@@ -198,6 +204,36 @@ export const skills = [
   { group: 'Systems & Tools', items: ['Linux', 'Docker', 'Git', 'GitHub Actions', 'WebAssembly (Emscripten)', 'Raspberry Pi', 'Vercel', 'Render'], usedIn: 'every project here' },
 ]
 
+// Which projects on this page use each skill (drives the 3D skills graph).
+export const skillGraph: { projects: string[]; skills: [string, string[]][] } = {
+  projects: ['NISHAD', 'MiniLang', 'Load Balancer', 'AlgoRace', 'RateMyCourse'],
+  skills: [
+    ['C++', ['MiniLang']],
+    ['Python', ['NISHAD']],
+    ['Go', ['Load Balancer']],
+    ['TypeScript', ['AlgoRace', 'RateMyCourse']],
+    ['JavaScript', ['MiniLang']],
+    ['SQL', ['Load Balancer', 'AlgoRace']],
+    ['React', ['AlgoRace']],
+    ['Next.js', ['RateMyCourse']],
+    ['Node.js', ['AlgoRace']],
+    ['Socket.IO', ['AlgoRace']],
+    ['PostgreSQL', ['Load Balancer', 'AlgoRace']],
+    ['Supabase', ['RateMyCourse']],
+    ['PyTorch', ['NISHAD']],
+    ['scikit-learn', ['NISHAD']],
+    ['XGBoost', ['NISHAD']],
+    ['OpenCV', ['NISHAD']],
+    ['Raspberry Pi', ['NISHAD']],
+    ['WebAssembly', ['MiniLang']],
+    ['GitHub Actions', ['MiniLang', 'Load Balancer']],
+    ['Docker', ['Load Balancer']],
+    ['Linux', ['Load Balancer', 'NISHAD']],
+    ['Concurrency', ['Load Balancer']],
+    ['Web Security', ['RateMyCourse']],
+  ],
+}
+
 export const education = {
   school: 'Indian Institute of Technology (IIT) Bhilai',
   degree: 'B.Tech in Computer Science and Engineering',
@@ -229,12 +265,12 @@ export const achievements = [
 ]
 
 export const stages = [
-  { stage: 0, label: 'Hello', href: '#top' },
-  { stage: 1, label: 'NISHAD', href: '#nishad' },
-  { stage: 2, label: 'MiniLang', href: '#minilang' },
-  { stage: 3, label: 'Load Balancer', href: '#load-balancer' },
-  { stage: 4, label: 'AlgoRace', href: '#algorace' },
-  { stage: 5, label: 'Open Source', href: '#open-source' },
-  { stage: 6, label: 'Skills', href: '#skills' },
-  { stage: 7, label: 'Contact', href: '#contact' },
+  { stage: 0, label: 'Base · Hello', href: '#top' },
+  { stage: 1, label: 'L1 · NISHAD', href: '#nishad' },
+  { stage: 2, label: 'L2 · MiniLang', href: '#minilang' },
+  { stage: 3, label: 'L3 · Load Balancer', href: '#load-balancer' },
+  { stage: 4, label: 'L4 · AlgoRace', href: '#algorace' },
+  { stage: 5, label: 'L5 · Open Source', href: '#open-source' },
+  { stage: 6, label: 'L6 · Skills', href: '#skills' },
+  { stage: 7, label: 'Summit · Contact', href: '#contact' },
 ]

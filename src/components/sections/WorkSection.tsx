@@ -14,14 +14,14 @@ export default function WorkSection({ item, demo }: { item: Work; demo?: ReactNo
       id={item.id}
       data-stage={item.stage}
       aria-labelledby={`${item.id}-title`}
-      className="relative flex min-h-[100svh] items-center py-24 lg:py-32"
+      className="pass-through relative flex min-h-[100svh] items-center py-24 lg:py-32"
       style={{ '--accent': item.accent } as CSSProperties}
     >
       <div className="container-x grid w-full lg:grid-cols-2">
         <div className={`${column} panel`}>
           <Reveal>
             <p className="eyebrow">
-              <span className="text-[var(--accent)]">{item.index}</span>
+              <span className="text-[var(--accent)]">{item.layer}</span>
               <span className="eyebrow-rule" aria-hidden="true" />
               {item.kicker}
             </p>

@@ -52,6 +52,19 @@ body {
   pointer-events: none;
 }
 
+/* On mouse devices, empty parts of these sections let clicks through to the 3D scene. */
+@media (hover: hover) and (pointer: fine) {
+  .pass-through {
+    pointer-events: none;
+  }
+  .pass-through .panel,
+  .pass-through .hero-copy,
+  .pass-through .skill-card,
+  .pass-through a {
+    pointer-events: auto;
+  }
+}
+
 .vignette {
   position: fixed;
   inset: 0;
@@ -209,6 +222,11 @@ body {
       0 40px 120px -50px rgba(0, 0, 0, 0.9),
       inset 0 1px 0 rgba(255, 255, 255, 0.04);
   }
+  @media (max-width: 1023px) {
+    .panel {
+      background: linear-gradient(180deg, rgba(9, 12, 22, 0.9), rgba(5, 7, 14, 0.86));
+    }
+  }
   @media (min-width: 640px) {
     .panel {
       padding: 2.25rem;
@@ -357,6 +375,78 @@ body {
   }
   .tilt:hover::after {
     opacity: 1;
+  }
+
+  .contact-backdrop {
+    position: relative;
+  }
+  .contact-backdrop::before {
+    content: "";
+    position: absolute;
+    inset: -4rem 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 60% 55% at 50% 45%, rgba(4, 5, 10, 0.82), rgba(4, 5, 10, 0.4) 60%, transparent 80%);
+  }
+
+  /* Live load balancer simulation */
+  .sim-backend {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.75rem 0.6rem;
+    border-radius: 0.9rem;
+    text-align: left;
+    border: 1px solid color-mix(in oklab, #34d399 35%, transparent);
+    background: rgba(52, 211, 153, 0.06);
+    transition:
+      border-color 0.2s,
+      background 0.2s,
+      transform 0.2s;
+  }
+  .sim-backend:hover {
+    transform: translateY(-2px);
+  }
+  .sim-backend[data-killed="true"] {
+    border-color: rgba(244, 63, 94, 0.5);
+    background: rgba(244, 63, 94, 0.08);
+  }
+  .sim-name {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: #e2e8f0;
+  }
+  .sim-state {
+    font-size: 0.72rem;
+    color: #6ee7b7;
+  }
+  .sim-backend[data-killed="true"] .sim-state {
+    color: #fda4af;
+  }
+  .sim-flight {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .sim-action {
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .sim-stat {
+    padding: 0.6rem;
+    border-radius: 0.8rem;
+    border: 1px solid var(--line);
+  }
+  .sim-stat dt {
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+  .sim-stat dd {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #fff;
   }
 
   /* Interactive demos */
